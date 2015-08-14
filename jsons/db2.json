@@ -1,0 +1,39 @@
+{
+    "searchProvider2": {
+        "name": "searchProvider",
+        "moduleFlag": "main",
+        "type": "POST",
+        "data": []
+    },
+   "searchPharmacy2": {
+        "name": "searchPharmacy",
+        "moduleFlag": "main",
+        "type": "POST",
+        "data": []
+    },
+    "searchDentists2": {
+        "name": "searchDentists",
+        "moduleFlag": "main",
+        "type": "POST",
+        "data": []
+    },
+    "searchVision2": {
+        "name": "searchVision",
+        "moduleFlag": "main",
+        "type": "POST",
+        "data": []
+    },
+    "medicalHistory2": {
+        "name": "medicalHistory",
+        "requiresAuth": "true",
+        "moduleFlag": "main",
+        "type": "GET"
+    },
+    "tahs2": {
+        "name": "tahs",
+        "requiresAuth": "true",
+        "moduleFlag": "main",
+        "type": "GET"
+    }
+
+}

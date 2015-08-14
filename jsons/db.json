@@ -1,0 +1,9 @@
+{
+    "searchProvider": {
+        "name": "searchProvider",
+        "moduleFlag": "main",
+        "type": "POST",
+        "data": []
+    }
+
+}
