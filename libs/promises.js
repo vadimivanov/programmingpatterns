@@ -4,9 +4,9 @@ function A(argument) {
     var deferred = null;
 
     function resolve(result) {
-        console.log('A-lib-newValue',result);
         try {
             if (result && typeof result.then === 'function') {
+                console.log('A-lib-result',result);
                 result.then(resolve, reject);
                 return;
             }
@@ -14,7 +14,6 @@ function A(argument) {
             value = result;
 
             if (deferred) {
-                console.log('A-lib-deferred', deferred);
                 handle(deferred);
             }
         } catch(e) {
@@ -42,32 +41,31 @@ function A(argument) {
             return;
         }
 
-        if(state === 'resolved') {
+        if (state === 'resolved') {
             handlerCallback = handler.onResolved;
         } else {
             handlerCallback = handler.onRejected;
         }
 
-//        if(!handlerCallback) {
-//            if(state === 'resolved') {
-//                handler.resolve(value);
-//            } else {
-//                handler.reject(value);
-//            }
-//
-//            return;
-//        }
+        if (!handlerCallback) {
+            if (state === 'resolved') {
+                handler.resolve(value);
+            } else {
+                handler.reject(value);
+            }
+
+            return;
+        }
         try {
             current = handlerCallback(value);
         } catch(e) {
             handler.reject(e);
         }
         handler.resolve(current);
-        console.log('A-lib-handle',state, handler);
     }
 
     this.then = function (onResolved, onRejected) {
-        console.log('A-lib-then', onResolved, onRejected);
+        console.log('A-then', onResolved, onRejected);
         return new A(function (resolve, reject) {
             handle({
                 onResolved: onResolved,
